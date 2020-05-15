@@ -39,12 +39,20 @@ body {
     position: fixed;
     width: 100vw;
     top: 0;
+    z-index: 1;
   }
   
   .menu a {
     display: block;
     padding: 10px 20px;
+    transition: background-color 2s, color, 2s;
   }
+
+.menu a:active,   
+.menu a:hover {
+  background-color: gray;
+  color: white;
+}
 
   .menu ul {
     display:flex;
@@ -64,21 +72,118 @@ body {
     text-decoration: underline;
   }
   
+.titulo{
+  transform: scale(0.2) translateY(50vh);
+  opacity: 0;
+  color:whitesmoke;
+  animation: linear 2s animacaoTitulo forwards;
+}
+
+@keyframes animacaoTitulo{
+/*  0% {
+
+  }
+*/  
+  50%{
+    transform: scale(0.6) translateY(25vh);
+    opacity: 0.5;   
+    color:whitesmoke;
+  }
+  100%{
+    transform: scale(1) translateY(0);
+    opacity: 1;   
+    color:black;
+  }
+
+  /* aceita ao inves de parametros o from (0%) e to (100%) */
+}
+
+
   .site-subtitle,
   .site-title {
-    color:whitesmoke;
+/*    color:whitesmoke;*/
     text-align:center;
   }
 
   .site-title {
     font-size: 4em;
+    font-family: 'Permanent Marker', cursive;
+    line-height: 1.8em;
   }
 
   .site-subtitle {
     font-style: italic;
+    font-family: 'Source Code Pro', monospace;
+  }
+
+.contato,
+.portfolio {
+  background-color: darkcyan;
+  padding: 2em;
+  min-height: 100vh;
+
+}  
+
+.contato h2,
+.portfolio h2 {
+  font-family: 'Source Code Pro', monospace;
+  color: aqua;
+  margin-bottom: 1.5em;
+  font-size: 2em;
+}
+
+.portfolio .grid {
+  display: grid;
+  gap: 1em;
+}
+
+@media (min-width: 560px) {
+  .portfolio .grid {
+    grid-template-columns: 240px 240px;
   }
   
-  .img-portfolio {
-    height: 180px;
-    width: 180px;
+}
+
+@media (min-width: 880px) {
+  .portfolio .grid {
+    grid-template-columns: repeat(3,240px);
+    align-content: center;
+    justify-content: center;
+    height: calc(100vh - 4em - 48px - 11.5em);
   }
+  
+}
+
+.portfolio figure {
+  text-align: center;
+}
+
+.img-portfolio {
+    height: 180px;
+    width: 240px;
+    object-fit: cover;
+    object-position: left bottom;
+    border-radius: 30%;
+    transform: scale(1);
+    transition: transform 500ms ;
+}
+
+.img-portfolio:hover {
+  transform: scale(1.2) rotate(45deg);  
+}
+
+.contato .icons {
+  text-align: center;
+}
+
+.contato a {
+  color: whitesmoke;
+  font-size: 3em;
+  transition: text-shadow, 1s;
+}
+
+.contato a:active,
+.contato a:hover {
+  text-decoration: none;
+  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6);
+}
